@@ -45,8 +45,6 @@
     const division1Reason = document.getElementById("division1_reason_label");
     const division2Reason = document.getElementById("division2_reason_label");
 
-    console.info(division1);
-
     division1.addEventListener("change", function (event) {
         console.info(division1.value);
         division1Reason.innerText = `Alasan memilih ${division1.value}`;

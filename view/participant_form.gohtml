@@ -67,7 +67,7 @@
 
             <div class="mb-3">
                 <label class="form-label">Divisi 1</label>
-                <select required  name="division1_name" class="form-select">
+                <select required id="division1"  name="division1_name" class="form-select">
                     <option disabled selected value="">Pilih divisi</option>
                     {{range $index, $role := .Roles}}
                         {{range $_, $value := $role}}
@@ -79,7 +79,7 @@
 
             <div class="mb-3">
                 <label class="form-label">Divisi 2</label>
-                <select required name="division2_name" class="form-select">
+                <select required id="division2" name="division2_name" class="form-select">
                     <option disabled selected value="">Pilih divisi</option>
                     {{range $index, $role := .Roles}}
                         {{range $_, $value := $role}}

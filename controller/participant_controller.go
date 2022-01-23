@@ -19,8 +19,18 @@ type participantController struct {
 func RegisterParticipantController(mux *http.ServeMux, participantUsecase domain.ParticipantUsecase) {
 	handler := &participantController{participantUsecase: participantUsecase}
 
+	mux.HandleFunc("/", handler.Home)
 	mux.HandleFunc("/daftar", handler.Register)
 	mux.HandleFunc("/daftar/berhasil", handler.RegisterSuccess)
+}
+
+func (controller participantController) Home(writer http.ResponseWriter, request *http.Request) {
+	if request.Method == http.MethodGet {
+		writer.WriteHeader(200)
+		view.Templates.ExecuteTemplate(writer, "participant_home.gohtml", map[string]interface{}{
+			"Title": "Open Recruitement | HMIF UNSRI 2021",
+		})
+	}
 }
 
 func (controller participantController) Register(writer http.ResponseWriter, request *http.Request) {
