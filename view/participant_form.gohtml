@@ -1,47 +1,159 @@
 {{template "template_header.gohtml" .}}
-<form action="/register" method="post">
-    <label for="name">Nama Lengkap : </label>
-    <input type="text" id="name" name="name"><br>
 
-    <label for="nim">NIM : </label>
-    <input type="text" id="nim" name="nim"><br>
+<div class="row px-4 mt-5">
+    <div class="col-12 text-center">
+        <h1 class="fw-bold">Lembar Pendaftaran</h1>
+        <p class="text-secondary mt-3">Praeterea, ex culpa non invenies unum aut non accusatis unum.</p>
+    </div>
+</div>
+
+<div class="row mt-5 bg-grey">
+    <div class="col-12 py-5">
+        <form class="px-3 needs-validation" novalidate action="/daftar" method="post" enctype="multipart/form-data">
+            <h6 class="fw-bold mb-4">Biodata Diri</h6>
+            <div class="mb-3">
+                <label for="name" class="form-label">Nama Lengkap</label>
+                <input maxlength="99" required type="text" name="name" class="form-control" id="name"
+                       placeholder="Nama lengkap">
+            </div>
+            <div class="mb-3">
+                <label for="nim" class="form-label">Nomor Induk Mahasiswa</label>
+                <input maxlength="17" minlength="10" required type="text" name="nim" class="form-control" id="nim"
+                       placeholder="Nomor induk mahasiswa">
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Angkatan</label>
+                <select required name="force" class="form-select">
+                    <option disabled selected value="">Pilih angkatan</option>
+                    <option value="2020">2020</option>
+                    <option value="2021">2021</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Kelas</label>
+                <select required name="class" class="form-select">
+                    <option disabled selected value="">Pilih kelas</option>
+                    {{range $index, $value := .Class}}
+                        <option value="{{$value}}">{{$value}}</option>
+                    {{end}}
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input required type="email" name="email" class="form-control" id="email" placeholder="Email">
+            </div>
+            <div class="mb-3">
+                <label for="domicile" class="form-label">Domisili</label>
+                <input maxlength="199" required type="text" name="domicile" class="form-control" id="domicile"
+                       placeholder="Domisili">
+            </div>
+            <div class="mb-3">
+                <label for="address" class="form-label">Alamat Lengkap</label>
+                <textarea maxlength="699" required class="form-control" name="address" id="address" rows="3"></textarea>
+            </div>
+            <div class="mb-3">
+                <label for="whatsapp_number" class="form-label">Whatsapp</label>
+                <input maxlength="24" required type="text" name="whatsapp_number" class="form-control"
+                       id="whatsapp_number"
+                       placeholder="Whatsapp">
+            </div>
+            <div class="mb-5">
+                <label for="line_id" class="form-label">ID Line</label>
+                <input maxlength="29" required type="text" name="line_id" class="form-control" id="line_id"
+                       placeholder="Line">
+            </div>
+
+            <h6 class="fw-bold mb-4">Pemilihan divisi</h6>
+
+            <div class="mb-3">
+                <label class="form-label">Divisi 1</label>
+                <select required  name="division1_name" class="form-select">
+                    <option disabled selected value="">Pilih divisi</option>
+                    {{range $index, $role := .Roles}}
+                        {{range $_, $value := $role}}
+                            <option value="{{$index}} - {{$value}}">Dinas {{$index}} - {{$value}}</option>
+                        {{end}}
+                    {{end}}
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Divisi 2</label>
+                <select required name="division2_name" class="form-select">
+                    <option disabled selected value="">Pilih divisi</option>
+                    {{range $index, $role := .Roles}}
+                        {{range $_, $value := $role}}
+                            <option value="{{$index}} - {{$value}}">Dinas {{$index}} - {{$value}}</option>
+                        {{end}}
+                    {{end}}
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label for="main_reason" class="form-label">Alasan bergabung HMIF</label>
+                <textarea required class="form-control" name="main_reason" id="main_reason" rows="3"></textarea>
+            </div>
+
+            <div class="mb-3">
+                <label for="division1_reason" id="division1_reason_label" class="form-label">Alasan memilih Divisi
+                    1</label>
+                <textarea required class="form-control" name="division1_reason" id="division1_reason"
+                          rows="3"></textarea>
+            </div>
+
+            <div class="mb-5">
+                <label for="division2_reason" id="division2_reason_label" class="form-label">Alasan memilih Divisi
+                    2</label>
+                <textarea required class="form-control" name="division2_reason" id="division2_reason"
+                          rows="3"></textarea>
+            </div>
+
+            <h6 class="fw-bold mb-3">Bukti mahasiswa</h6>
+            <div class="mb-5">
+                <label for="kpm" class="form-label">Kartu Pengenal Mahasiswa (KPM/Sementara). Maksimal 4MB, Format :
+                    jpg,png,pdf.</label>
+                <input required class="form-control" name="kpm" type="file" id="kpm">
+            </div>
+
+            <div class="form-check mb-4">
+                <input required class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
+                <label class="form-check-label text-secondary" for="invalidCheck">
+                    Saya sudah membaca persyaratan dan menerima untuk mengikuti semua rangkaian acara pendaftaran staff
+                    HMIF UNSRI. Baca persyaratan dan rangkaian acara <a href="" target="_blank">disini</a>
+                </label>
+                <div class="invalid-feedback mt-2">
+                    Kamu harus setuju sebelum mengirimkan formulir pendaftaran
+                </div>
+            </div>
+
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                Kirim
+            </button>
+
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                 aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Pemberitahuan</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            Apakah anda yakin dengand data yang sudah diisi ?
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kembali</button>
+                            <button type="submit" class="btn btn-primary">Yakin</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </form>
+    </div>
+</div>
 
 
-    <label for="force">Angkatan : </label>
-    <select name="force" id="force">
-        <option selected value="-">-- Tekan untuk memilih --</option>
-        <option value="2020">2020</option>
-        <option value="2021">2021</option>
-    </select><br>
-
-
-    <label for="class">Class : </label>
-    <select name="class" id="class">
-        <option selected value="-">-- Tekan untuk memilih --</option>
-        {{range $index, $value := .Class}}
-            <option value="{{$value}}">{{$value}}</option>
-        {{end}}
-    </select><br>
-
-
-    <label for="domicile">Domisili : </label>
-    <input type="text" id="domicile" name="domicile"><br>
-
-
-    <label for="address">Alamat Lengkap : </label>
-    <input type="text" id="address" name="address"><br>
-
-
-    <label for="email">Email : </label>
-    <input type="email" id="email" name="email"><br>
-
-
-    <label for="whatsapp_number">Whatsapp : </label>
-    <input type="text" id="whatsapp_number" name="whatsapp_number"><br>
-
-    <label for="line_id">ID Line : </label>
-    <input type="text" id="line_id" name="line_id"><br>
-
-    <button type="submit">Submit</button>
-</form>
 {{template "template_footer.gohtml"}}
