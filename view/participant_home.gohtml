@@ -1,7 +1,117 @@
 {{template "template_header.gohtml" .}}
-<div class="row">
-    <div class="col-12">
-        <h1>Hello World</h1>
+    <!-- Jumbotron -->
+<div
+class="bg-image p-5 text-center shadow-1-strong rounded mb-5 text-black"
+style="background-image: url('img/bg web.png');"
+>
+<img class="d-block mx-auto mb-4" src="img/image.png" alt="" width="72" height="57">
+        <h1 class="display-5 fw-bold" >HMIF</h1>
+        <h1 class="display-5 fw-bold">OPEN RECRUITMENT</h1>
+<div class="col-lg-6 mx-auto">
+    <p class="lead mb-4"> Himpunan Mahasiswa Teknik Informatika a.k.a HMIF Sebuah Organisasi Kemahasiswaan dari Jurusan Teknik Informatika, yang bergerak dalam bidang Akademik maupun Seni yang dapat menjadi wadah bagi para Mahasiswa Jurusan Teknik Informatika.</p>
+    <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+      <a class="btn btn-primary btn-lg px-4 gap-3 " href="http://localhost:8080/daftar">Daftar Sekarang</a>
+      <a class="btn btn-outline-dark btn-lg px-4" >Lihat Dinas</a>
+    </div>
+  </div>
+</div>
+<!-- Jumbotron -->
+
+<!--TimeLIne-->
+<div class="container-fluid">
+  <div class="row">
+      <div class="col-lg-12">
+          <div class="card">
+              <div class="card-body">
+                  <h4 class="card-title mb-5">Horizontal Timeline</h4>
+  
+                  <div class="hori-timeline" dir="ltr">
+                      <ul class="list-inline events">
+                          <li class="list-inline-item event-list">
+                              <div class="px-4">
+                                  <div class="event-date bg-soft-primary text-primary">2 June</div>
+                                  <h5 class="font-size-16">Event One</h5>
+                                  <p class="text-muted">It will be as simple as occidental in fact it will be Occidental Cambridge friend</p>
+                                  <div>
+                                      <a href="#" class="btn btn-primary btn-sm">Read more</a>
+                                  </div>
+                              </div>
+                          </li>
+                          <li class="list-inline-item event-list">
+                              <div class="px-4">
+                                  <div class="event-date bg-soft-success text-success">5 June</div>
+                                  <h5 class="font-size-16">Event Two</h5>
+                                  <p class="text-muted">Everyone realizes why a new common language one could refuse translators.</p>
+                                  <div>
+                                      <a href="#" class="btn btn-primary btn-sm">Read more</a>
+                                  </div>
+                              </div>
+                          </li>
+                          <li class="list-inline-item event-list">
+                              <div class="px-4">
+                                  <div class="event-date bg-soft-danger text-danger">7 June</div>
+                                  <h5 class="font-size-16">Event Three</h5>
+                                  <p class="text-muted">If several languages coalesce the grammar of the resulting simple and regular</p>
+                                  <div>
+                                      <a href="#" class="btn btn-primary btn-sm">Read more</a>
+                                  </div>
+                              </div>
+                          </li>
+                          <li class="list-inline-item event-list">
+                              <div class="px-4">
+                                  <div class="event-date bg-soft-warning text-warning">8 June</div>
+                                  <h5 class="font-size-16">Event Four</h5>
+                                  <p class="text-muted">Languages only differ in their pronunciation and their most common words.</p>
+                                  <div>
+                                      <a href="#" class="btn btn-primary btn-sm">Read more</a>
+                                  </div>
+                              </div>
+                          </li>
+                      </ul>
+                  </div>
+              </div>
+          </div>
+          <!-- end card -->
+      </div>
+  </div>
+
+<!-- FAQ-->
+<div class="m-4">
+    <div class="accordion" id="myAccordion">
+      <h1 class="text-center">Frequently Asked Questions</h1>
+						<span></span>
+						<p class="text-center">Our Frequently Asked Questions here.</p>
+
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingOne">
+                <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#collapseOne">1. What is HTML?</button>									
+            </h2>
+            <div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#myAccordion">
+                <div class="card-body">
+                    <p>HTML stands for HyperText Markup Language. HTML is the standard markup language for describing the structure of web pages. <a href="https://www.tutorialrepublic.com/html-tutorial/" target="_blank">Learn more.</a></p>
+                </div>
+            </div>
+        </div>
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingTwo">
+                <button type="button" class="accordion-button" data-bs-toggle="collapse" data-bs-target="#collapseTwo">2. What is Bootstrap?</button>
+            </h2>
+            <div id="collapseTwo" class="accordion-collapse collapse show" data-bs-parent="#myAccordion">
+                <div class="card-body">
+                    <p>Bootstrap is a sleek, intuitive, and powerful front-end framework for faster and easier web development. It is a collection of CSS and HTML conventions. <a href="https://www.tutorialrepublic.com/twitter-bootstrap-tutorial/" target="_blank">Learn more.</a></p>
+                </div>
+            </div>
+        </div>
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingThree">
+                <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#collapseThree">3. What is CSS?</button>                     
+            </h2>
+            <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#myAccordion">
+                <div class="card-body">
+                    <p>CSS stands for Cascading Style Sheet. CSS allows you to specify various style properties for a given HTML element such as colors, backgrounds, fonts etc. <a href="https://www.tutorialrepublic.com/css-tutorial/" target="_blank">Learn more.</a></p>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 {{template "template_footer.gohtml"}}
