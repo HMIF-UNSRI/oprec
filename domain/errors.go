@@ -8,7 +8,6 @@ func NewNotFoundError(error string) NotFoundError {
 	return NotFoundError{Error: error}
 }
 
-
 type AlreadyExistError struct {
 	Error string
 }

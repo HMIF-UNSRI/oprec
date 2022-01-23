@@ -3,6 +3,7 @@ package middleware
 import (
 	"github.com/sirupsen/logrus"
 	"net/http"
+	"oprec/pkg/exception"
 	"time"
 )
 
@@ -49,6 +50,8 @@ func LoggerMiddleware(logger *logrus.Logger) func(http.Handler) http.Handler {
 						"duration": time.Since(start),
 						"error":    err,
 					}).Errorln()
+
+					exception.ErrorHandler(writer,request,err)
 				}
 			}()
 

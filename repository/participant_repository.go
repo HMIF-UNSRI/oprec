@@ -9,8 +9,6 @@ import (
 	"oprec/pkg/helper"
 )
 
-
-
 type participantRepositoryImpl struct {
 	db *sql.DB
 }
@@ -20,10 +18,11 @@ func NewParticipantRepositoryImpl(db *sql.DB) *participantRepositoryImpl {
 }
 
 func (repository participantRepositoryImpl) Save(ctx context.Context, participant domain.Participant) {
-	statement := "INSERT INTO participants(name, nim, `force`, class, domicile, address, email, whatsapp_number, line_id) VALUE (?, ?, ?, ?, ?, ?, ?, ?, ?);"
+	statement := "INSERT INTO participants(name, nim, `force`, class, domicile, address, email, whatsapp_number, line_id, main_reason, division1_name, division1_reason, division2_name, division2_reason, kpm_file_name) VALUE (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);"
 	_, err := repository.db.ExecContext(ctx, statement, &participant.Name, &participant.NIM, &participant.Force,
 		&participant.Class, &participant.Domicile, &participant.Address, &participant.Email,
-		&participant.WhatsappNumber, &participant.LineID)
+		&participant.WhatsappNumber, &participant.LineID, &participant.MainReason, &participant.Division1.Name, &participant.Division1.Reason,
+		&participant.Division2.Name, &participant.Division2.Reason, &participant.KPMFileName)
 	helper.PanicIfErr(err)
 }
 
@@ -36,7 +35,8 @@ func (repository participantRepositoryImpl) FindOneBy(ctx context.Context, state
 	if rows.Next() {
 		err := rows.Scan(&participant.ID, &participant.Name, &participant.NIM, &participant.Force,
 			&participant.Class, &participant.Domicile, &participant.Address, &participant.Email,
-			&participant.WhatsappNumber, &participant.LineID)
+			&participant.WhatsappNumber, &participant.LineID, &participant.MainReason, &participant.Division1.Name, &participant.Division1.Reason,
+			&participant.Division2.Name, &participant.Division2.Reason, &participant.KPMFileName)
 		helper.PanicIfErr(err)
 
 		return participant, nil
@@ -56,7 +56,8 @@ func (repository participantRepositoryImpl) FindAllBy(ctx context.Context, state
 
 		err := rows.Scan(&participant.ID, &participant.Name, &participant.NIM, &participant.Force,
 			&participant.Class, &participant.Domicile, &participant.Address, &participant.Email,
-			&participant.WhatsappNumber, &participant.LineID)
+			&participant.WhatsappNumber, &participant.LineID, &participant.MainReason, &participant.Division1.Name, &participant.Division1.Reason,
+			&participant.Division2.Name, &participant.Division2.Reason, &participant.KPMFileName)
 		helper.PanicIfErr(err)
 
 		participants = append(participants, participant)
@@ -66,6 +67,7 @@ func (repository participantRepositoryImpl) FindAllBy(ctx context.Context, state
 }
 
 func (repository participantRepositoryImpl) SelectBuilder() sq.SelectBuilder {
-	return sq.Select("id", "name", "nim","`force`","class","domicile",
-		"address","email","whatsapp_number","line_id").From("participants")
+	return sq.Select("id", "name", "nim", "`force`", "class", "domicile",
+		"address", "email", "whatsapp_number", "line_id", "main_reason", "division1_name", "division1_reason", "division2_name",
+		"division2_reason", "kpm_file_name").From("participants")
 }
