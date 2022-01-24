@@ -2,6 +2,7 @@ package domain
 
 import (
 	"context"
+
 	sq "github.com/Masterminds/squirrel"
 )
 
@@ -14,8 +15,8 @@ var ParticipantClass = [...]string{"Regular A", "Regular B", "Regular C", "Bilin
 
 var Roles = map[string][]string{
 	"Akademik":                         {"Pengembangan Ilmu Pengetahuan", "Pengembangan Teknologi Informasi"},
-	"Dana Usaha":                       {"Tidak ada divisi"},
-	"Informasi dan Komunikasi":         {"Multimedia", "Hubungan Masyarakat"},
+	"Kewirausahaan":                    {"Tidak ada divisi"},
+	"Komunikasi dan Informasi":         {"Multimedia", "Hubungan Masyarakat"},
 	"Kajian Strategi dan Adovokasi":    {"Politik dan Propaganda", "Advokasi dan Kesejahteraan Mahasiswa"},
 	"Administrasi":                     {"Kebendaharaan", "Kesekretariatan"},
 	"Pengembangan Minat dan Bakat":     {"Seni", "Olahraga"},

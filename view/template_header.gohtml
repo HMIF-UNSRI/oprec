@@ -15,6 +15,72 @@
         .bg-grey {
             background-color: #F8F8F8;
         }
+           .accordion-button::after {
+          background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='%23333' xmlns='http://www.w3.org/2000/svg'%3e%3cpath fill-rule='evenodd' d='M8 0a1 1 0 0 1 1 1v6h6a1 1 0 1 1 0 2H9v6a1 1 0 1 1-2 0V9H1a1 1 0 0 1 0-2h6V1a1 1 0 0 1 1-1z' clip-rule='evenodd'/%3e%3c/svg%3e");
+          transform: scale(.7) !important;
+        }
+        .accordion-button:not(.collapsed)::after {
+          background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='%23333' xmlns='http://www.w3.org/2000/svg'%3e%3cpath fill-rule='evenodd' d='M0 8a1 1 0 0 1 1-1h14a1 1 0 1 1 0 2H1a1 1 0 0 1-1-1z' clip-rule='evenodd'/%3e%3c/svg%3e");
+        }
+        body{
+          background:#eee;
+      }
+      .hori-timeline .events {
+          border-top: 3px solid #e9ecef;
+      }
+      .hori-timeline .events .event-list {
+          display: block;
+          position: relative;
+          text-align: center;
+          padding-top: 70px;
+          margin-right: 0;
+      }
+      .hori-timeline .events .event-list:before {
+          content: "";
+          position: absolute;
+          height: 36px;
+          border-right: 2px dashed #dee2e6;
+          top: 0;
+      }
+      .hori-timeline .events .event-list .event-date {
+          position: absolute;
+          top: 38px;
+          left: 0;
+          right: 0;
+          width: 75px;
+          margin: 0 auto;
+          border-radius: 4px;
+          padding: 2px 4px;
+      }
+      @media (min-width: 1140px) {
+          .hori-timeline .events .event-list {
+              display: inline-block;
+              width: 24%;
+              padding-top: 45px;
+          }
+          .hori-timeline .events .event-list .event-date {
+              top: -12px;
+          }
+      }
+      .bg-soft-primary {
+          background-color: rgba(64,144,203,.3)!important;
+      }
+      .bg-soft-success {
+          background-color: rgba(71,189,154,.3)!important;
+      }
+      .bg-soft-danger {
+          background-color: rgba(231,76,94,.3)!important;
+      }
+      .bg-soft-warning {
+          background-color: rgba(249,213,112,.3)!important;
+      }
+      .card {
+          border: none;
+          margin-bottom: 24px;
+          -webkit-box-shadow: 0 0 13px 0 rgba(236,236,241,.44);
+          box-shadow: 0 0 13px 0 rgba(236,236,241,.44);
+      }
+      
     </style>
 </head>
 <body>
