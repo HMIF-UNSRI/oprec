@@ -22,9 +22,12 @@ func main() {
 	participantRepository := repository.NewParticipantRepositoryImpl(conn)
 	participantUsecase := usecase.NewParticipantUsecaseImpl(participantRepository, validate)
 
+	directory := http.Dir("./resources")
+	fileServer := http.FileServer(directory)
+
 	logFile, err := os.OpenFile("application.log", os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0666)
 	helper.PanicIfErr(err)
-	multiWriter := io.MultiWriter(os.Stdout,logFile)
+	multiWriter := io.MultiWriter(os.Stdout, logFile)
 
 	logger := logrus.New()
 	logger.SetLevel(logrus.TraceLevel)
@@ -33,6 +36,7 @@ func main() {
 	loggerMiddleware := middleware.LoggerMiddleware(logger)
 
 	mux := http.NewServeMux()
+	mux.Handle("/static/", http.StripPrefix("/static", fileServer))
 	controller.RegisterParticipantController(mux, participantUsecase)
 
 	loggedMux := loggerMiddleware(mux)
