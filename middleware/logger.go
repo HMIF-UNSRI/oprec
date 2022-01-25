@@ -42,16 +42,7 @@ func LoggerMiddleware(logger *logrus.Logger) func(http.Handler) http.Handler {
 			defer func() {
 				err := recover()
 				if err != nil {
-					writer.WriteHeader(http.StatusInternalServerError)
-					logger.WithFields(logrus.Fields{
-						"status":   http.StatusInternalServerError,
-						"method":   request.Method,
-						"path":     request.URL.EscapedPath(),
-						"duration": time.Since(start),
-						"error":    err,
-					}).Errorln()
-
-					exception.ErrorHandler(writer,request,err)
+					exception.ErrorHandler(writer, request, err, logger)
 				}
 			}()
 
