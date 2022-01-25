@@ -28,7 +28,7 @@ func (controller participantController) Home(writer http.ResponseWriter, request
 	if request.Method == http.MethodGet {
 		writer.WriteHeader(200)
 		view.Templates.ExecuteTemplate(writer, "participant_home.gohtml", map[string]interface{}{
-			"Title": "Open Recruitement | HMIF UNSRI 2021",
+			"Title": "Open Recruitement | HMIF UNSRI 2022",
 		})
 	}
 }
@@ -37,7 +37,7 @@ func (controller participantController) Register(writer http.ResponseWriter, req
 	if request.Method == http.MethodGet {
 		writer.WriteHeader(http.StatusOK)
 		view.Templates.ExecuteTemplate(writer, "participant_form.gohtml", map[string]interface{}{
-			"Title": "Formulir Pendaftaran",
+			"Title": "Formulir Pendaftaran | HMIF UNSRI 2022",
 			"Class": domain.ParticipantClass,
 			"Roles": domain.Roles,
 		})
@@ -105,18 +105,16 @@ func (controller participantController) Register(writer http.ResponseWriter, req
 		}
 
 		controller.participantUsecase.Register(request.Context(), payload)
-		writer.WriteHeader(http.StatusOK)
 
-		http.Redirect(writer, request, domain.BaseUrl+"/daftar/berhasil", http.StatusMovedPermanently)
+		http.Redirect(writer, request, "/daftar/berhasil", http.StatusMovedPermanently)
 	} else {
 	}
 }
 
 func (controller participantController) RegisterSuccess(writer http.ResponseWriter, request *http.Request) {
 	if request.Method == http.MethodGet {
-		writer.WriteHeader(http.StatusOK)
 		view.Templates.ExecuteTemplate(writer, "participant_success.gohtml", map[string]interface{}{
-			"Title": "Berhasil Mendaftar",
+			"Title": "Berhasil Mendaftar | HMIF UNSRI 2022",
 		})
 	} else {
 
