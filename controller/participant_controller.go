@@ -1,7 +1,6 @@
 package controller
 
 import (
-	"github.com/google/uuid"
 	"io"
 	"net/http"
 	"oprec/domain"
@@ -10,6 +9,8 @@ import (
 	"os"
 	"path/filepath"
 	"strconv"
+
+	"github.com/google/uuid"
 )
 
 type participantController struct {
@@ -28,7 +29,7 @@ func (controller participantController) Home(writer http.ResponseWriter, request
 	if request.Method == http.MethodGet {
 		writer.WriteHeader(200)
 		view.Templates.ExecuteTemplate(writer, "participant_home.gohtml", map[string]interface{}{
-			"Title": "Open Recruitement | HMIF UNSRI 2022",
+			"Title":   "Open Recruitment | HMIF UNSRI 2022",
 			"BaseUrl": domain.BaseUrl,
 		})
 	}
@@ -116,7 +117,7 @@ func (controller participantController) Register(writer http.ResponseWriter, req
 func (controller participantController) RegisterSuccess(writer http.ResponseWriter, request *http.Request) {
 	if request.Method == http.MethodGet {
 		view.Templates.ExecuteTemplate(writer, "participant_success.gohtml", map[string]interface{}{
-			"Title": "Berhasil Mendaftar | HMIF UNSRI 2022",
+			"Title":   "Berhasil Mendaftar | HMIF UNSRI 2022",
 			"BaseUrl": domain.BaseUrl,
 		})
 	} else {
