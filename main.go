@@ -1,8 +1,10 @@
 package main
 
 import (
+	"crypto/tls"
 	"github.com/go-playground/validator/v10"
 	"github.com/sirupsen/logrus"
+	"golang.org/x/crypto/acme/autocert"
 	"io"
 	"net/http"
 	"oprec/controller"
@@ -40,9 +42,20 @@ func main() {
 
 	loggedMux := loggerMiddleware(mux)
 
-	server := http.Server{
-		Addr:    ":8080",
-		Handler: loggedMux,
+	certManager := autocert.Manager{
+		Prompt:     autocert.AcceptTOS,
+		HostPolicy: autocert.HostWhitelist("hmifunsri.org"),
+		Cache:      autocert.DirCache("certs"),
 	}
-	logger.Fatalln(server.ListenAndServe())
+
+	server := http.Server{
+		Addr:    ":https",
+		Handler: loggedMux,
+		TLSConfig: &tls.Config{
+			GetCertificate: certManager.GetCertificate,
+		},
+	}
+
+	go http.ListenAndServe(":http", certManager.HTTPHandler(nil))
+	logger.Fatalln(server.ListenAndServeTLS("",""))
 }
