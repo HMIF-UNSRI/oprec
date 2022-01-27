@@ -7,7 +7,7 @@ import (
 )
 
 const (
-	BaseUrl      = "http://localhost:8080"
+	BaseUrl      = "https://hmifunsri.org"
 	MaxImageSize = 1024 * 1024 * 4 // 4MB
 )
 

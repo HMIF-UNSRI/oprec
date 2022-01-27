@@ -2,15 +2,15 @@
     <!-- Jumbotron -->
 <div
 class="bg-image p-5 text-center shadow-1-strong rounded mb-5 text-black"
-style="background-image: url('http://localhost:8080/static/bg web.png');"
+style="background-image: url('{{.BaseUrl}}/static/bg web.png');"
 >
-<img class="d-block mx-auto mb-4" src="http://localhost:8080/static/image.png" alt="" width="72" height="57">
+<img class="d-block mx-auto mb-4" src="{{.BaseUrl}}/static/image.png" alt="" width="72" height="57">
         <h1 class="display-5 fw-bold" >HMIF</h1>
         <h1 class="display-5 fw-bold">OPEN RECRUITMENT</h1>
 <div class="col-lg-6 mx-auto">
     <p class="lead mb-4"> Himpunan Mahasiswa Teknik Informatika a.k.a HMIF adalah Sebuah Organisasi Kemahasiswaan khusus Jurusan Teknik Informatika, yang bergerak dalam bidang Akademik maupun Non-Akademik yang dapat menjadi wadah bagi para Mahasiswa Jurusan Teknik Informatika.</p>
     <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
-      <a class="btn btn-primary btn-lg px-4 gap-3 " href="http://localhost:8080/daftar">Daftar Sekarang</a>
+      <a class="btn btn-primary btn-lg px-4 gap-3 " href="{{.BaseUrl}}/daftar">Daftar Sekarang</a>
       <a class="btn btn-outline-dark btn-lg px-4" >Lihat Dinas</a>
     </div>
   </div>
@@ -24,7 +24,7 @@ style="background-image: url('http://localhost:8080/static/bg web.png');"
           <div class="card">
               <div class="card-body">
                   <h4 class="card-title text-center mb-5">Timeline OPREC</h4>
-  
+
                   <div class="hori-timeline" dir="ltr">
                       <ul class="list-inline events">
                           <li class="list-inline-item event-list">
@@ -72,7 +72,7 @@ style="background-image: url('http://localhost:8080/static/bg web.png');"
 
         <div class="accordion-item">
             <h2 class="accordion-header" id="headingOne">
-                <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#collapseOne"><b>Siapa saja yang boleh mendaftar menjadi pengurus HMIF?</b></button>									
+                <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#collapseOne"><b>Siapa saja yang boleh mendaftar menjadi pengurus HMIF?</b></button>
             </h2>
             <div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#myAccordion">
                 <div class="card-body">
@@ -86,13 +86,13 @@ style="background-image: url('http://localhost:8080/static/bg web.png');"
             </h2>
             <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#myAccordion">
                 <div class="card-body">
-                    <p>Dapat dilakukan dengan membuka link pendaftaran <a href="http://localhost:8080/daftar" target="_blank">INI LINK</a> kemudian memilih menu registrasi dan mengisi identitas dan data yang diperlukan pada formulir yang disediakan. Setelah mengisi identitas dan data, dapat melakukan submit untuk mengirim formulir yang telah di isi.</p>
+                    <p>Dapat dilakukan dengan membuka link pendaftaran <a href="{{.BaseUrl}}/daftar" target="_blank">INI LINK</a> kemudian memilih menu registrasi dan mengisi identitas dan data yang diperlukan pada formulir yang disediakan. Setelah mengisi identitas dan data, dapat melakukan submit untuk mengirim formulir yang telah di isi.</p>
                 </div>
             </div>
         </div>
         <div class="accordion-item">
             <h2 class="accordion-header" id="headingThree">
-                <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#collapseThree"><b>Apakah boleh mendaftar dengan bidang yang sama di opsi 1 dan opsi 2?</b></button>                     
+                <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#collapseThree"><b>Apakah boleh mendaftar dengan bidang yang sama di opsi 1 dan opsi 2?</b></button>
             </h2>
             <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#myAccordion">
                 <div class="card-body">

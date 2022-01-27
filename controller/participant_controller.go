@@ -29,6 +29,7 @@ func (controller participantController) Home(writer http.ResponseWriter, request
 		writer.WriteHeader(200)
 		view.Templates.ExecuteTemplate(writer, "participant_home.gohtml", map[string]interface{}{
 			"Title": "Open Recruitement | HMIF UNSRI 2022",
+			"BaseUrl": domain.BaseUrl,
 		})
 	}
 }
@@ -37,9 +38,10 @@ func (controller participantController) Register(writer http.ResponseWriter, req
 	if request.Method == http.MethodGet {
 		writer.WriteHeader(http.StatusOK)
 		view.Templates.ExecuteTemplate(writer, "participant_form.gohtml", map[string]interface{}{
-			"Title": "Formulir Pendaftaran | HMIF UNSRI 2022",
-			"Class": domain.ParticipantClass,
-			"Roles": domain.Roles,
+			"Title":   "Formulir Pendaftaran | HMIF UNSRI 2022",
+			"Class":   domain.ParticipantClass,
+			"Roles":   domain.Roles,
+			"BaseUrl": domain.BaseUrl,
 		})
 	} else if request.Method == http.MethodPost {
 		// KPM
@@ -115,6 +117,7 @@ func (controller participantController) RegisterSuccess(writer http.ResponseWrit
 	if request.Method == http.MethodGet {
 		view.Templates.ExecuteTemplate(writer, "participant_success.gohtml", map[string]interface{}{
 			"Title": "Berhasil Mendaftar | HMIF UNSRI 2022",
+			"BaseUrl": domain.BaseUrl,
 		})
 	} else {
 

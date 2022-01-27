@@ -15,7 +15,6 @@ import (
 )
 
 func main() {
-	//TODO: page error
 	conn := mariadb.NewConnection()
 	validate := validator.New()
 
